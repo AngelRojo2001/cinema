@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 
 @section('content')
-	<form action="">
+	{!! Form::open(['route' => 'usuario.store', 'method' => 'POST']) !!}
 		<div class="form-group">
-			<label for="">Nombre</label>
-			<input type="text" name="" class="form-control">
+			{!! Form::label('name', 'Nombre:') !!}
+			{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el nombre del usuario']) !!}
 		</div>
 		<div class="form-group">
-			<label for="">Correo</label>
-			<input type="text" name="" class="form-control">
+			{!! Form::label('email', 'Correo:') !!}
+			{!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el correo del usuario']) !!}
 		</div>
 		<div class="form-group">
-			<label for="">Contraseña</label>
-			<input type="password" name="" class="form-control">
+			{!! Form::label('password', 'Password:') !!}
+			{!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Ingresa el password del usuario']) !!}
 		</div>
-		<button class="btn btn-primary">Registrar</button>
-	</form>
+		{!! Form::submit('Registrar', ['class'=>'btn btn-primary']) !!}
+	{!! Form::close() !!}
 @endsection

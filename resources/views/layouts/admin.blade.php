@@ -12,22 +12,22 @@
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    {!! Html::style('css/bootstrap.min.css') !!}
 
     <!-- MetisMenu CSS -->
-    <link href="css/metisMenu.min.css" rel="stylesheet">
+    {!! Html::style('css/metisMenu.min.css') !!}
 
     <!-- Timeline CSS -->
     <link href="../dist/css/timeline.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
+    {!! Html::style('css/sb-admin-2.css') !!}
 
     <!-- Morris Charts CSS -->
     <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    {!! Html::style('css/font-awesome.min.css') !!}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -382,13 +382,13 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
+    {!! Html::script('js/jquery.min.js') !!}
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    {!! Html::script('js/bootstrap.min.js') !!}
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="js/metisMenu.min.js"></script>
+    {!! Html::script('js/metisMenu.min.js') !!}
 
     <!-- Morris Charts JavaScript -->
     <script src="../bower_components/raphael/raphael-min.js"></script>
@@ -396,8 +396,7 @@
     <script src="../js/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/sb-admin-2.js"></script>
-
+    {!! Html::script('js/sb-admin-2.js') !!}
 </body>
 
 </html>
