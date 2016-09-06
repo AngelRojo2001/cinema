@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use Auth;
 use App\Http\Requests;
-use App\Http\Requests\UserCreateRequest;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\LoginRequest;
 
-class UsuarioController extends Controller
+class LogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(2);
-        return view('usuario.index', compact('users'));
+        //
     }
 
     /**
@@ -28,7 +26,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('usuario.create');
+        //
     }
 
     /**
@@ -37,11 +35,18 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserCreateRequest $request)
+    public function store(LoginRequest $request)
     {
-        User::create($request->all());
+        if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            return redirect('admin');
+        }
+        return redirect('/')->with('message-error', 'Datos son incorrectos.');
+    }
 
-        return redirect('usuario')->with('message','Usuario Creado Correctamente');
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 
     /**
@@ -63,8 +68,7 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('usuario.edit', ['user'=>$user]);
+        //
     }
 
     /**
@@ -74,12 +78,9 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserUpdateRequest $request, $id)
+    public function update(LoginRequest $request, $id)
     {
-        $user = User::find($id);
-        $user->fill($request->all());
-        $user->save();
-        return redirect('usuario')->with('message', 'Usuario Editado Correctamente.');
+        //
     }
 
     /**
@@ -90,9 +91,6 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-
-        return redirect('usuario')->with('message', 'Usuario Eliminado Correctamente');
+        //
     }
 }
